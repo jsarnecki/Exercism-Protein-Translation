@@ -51,19 +51,19 @@ describe('ProteinTranslation', () => {
       ]);
     });
 
-    xtest('Translation stops if STOP codon at beginning of sequence', () => {
+    test('Translation stops if STOP codon at beginning of sequence', () => {
       expect(translate('UAGUGG')).toEqual([]);
     });
 
-    xtest('Translation stops if STOP codon at end of three-codon sequence', () => {
+    test('Translation stops if STOP codon at end of three-codon sequence', () => {
       expect(translate('AUGUUUUAA')).toEqual(['Methionine', 'Phenylalanine']);
     });
 
-    xtest('Translation stops if STOP codon in middle of three-codon sequence', () => {
+    test('Translation stops if STOP codon in middle of three-codon sequence', () => {
       expect(translate('UGGUAGUGG')).toEqual(['Tryptophan']);
     });
 
-    xtest('Translation stops if STOP codon in middle of six-codon sequence', () => {
+    test('Translation stops if STOP codon in middle of six-codon sequence', () => {
       expect(translate('UGGUGUUAUUAAUGGUUU')).toEqual([
         'Tryptophan',
         'Cysteine',

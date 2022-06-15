@@ -28,8 +28,13 @@ export const translate = (rna) => {
       }
     }
   }
+  
+  // Remove STOP proteins
+  if (result.includes("STOP")) {
+    const stop = result.indexOf("STOP");
+    result.splice(stop);
+  }
 
-  console.log(result);
   return result;
 
 };
