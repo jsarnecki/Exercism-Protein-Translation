@@ -35,15 +35,15 @@ describe('ProteinTranslation', () => {
   });
 
   describe('Multiple codons', () => {
-    xtest('Sequence of two protein codons translates into proteins', () => {
+    test('Sequence of two protein codons translates into proteins', () => {
       expect(translate('UUUUUU')).toEqual(['Phenylalanine', 'Phenylalanine']);
     });
 
-    xtest('Sequence of two different protein codons translates into proteins', () => {
+    test('Sequence of two different protein codons translates into proteins', () => {
       expect(translate('UUAUUG')).toEqual(['Leucine', 'Leucine']);
     });
 
-    xtest('Translate RNA strand into correct protein list', () => {
+    test('Translate RNA strand into correct protein list', () => {
       expect(translate('AUGUUUUGG')).toEqual([
         'Methionine',
         'Phenylalanine',
