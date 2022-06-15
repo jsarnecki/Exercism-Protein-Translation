@@ -1,5 +1,9 @@
 
 export const translate = (rna) => {
+  
+  if (!rna) {
+    return [];
+  }
 
   const mapping = [
     ['Methionine', ['AUG']],
@@ -12,21 +16,21 @@ export const translate = (rna) => {
     ['STOP', ['UAA', 'UAG', 'UGA']]
   ];
 
-  if (!rna) {
-    return [];
-  }
-
   const split = rna.match(/.{1,3}/g);
   const result = [];
 
   // Loop thru rnaSplitArr, compare against mapping
-  for (let rna of split) {
-    for (let pro of mapping) {
-      if (pro[1].includes(rna)) {
+  for (const rna of split) {
+    for (const protein of mapping) {
+      if (protein[1].includes(rna)) {
         //Push mapping[x][0] into result
-        result.push(pro[0]);
+        result.push(protein[0]);
       }
     }
+  }
+
+  if ((!result.length && split) || (split[split.length - 1].length < 3 && !result.includes("STOP"))) {
+    throw new Error('Invalid codon');
   }
   
   // Remove STOP proteins
